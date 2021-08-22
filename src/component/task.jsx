@@ -35,7 +35,13 @@ const AddTask=({onAddTask, onCancel})=>{
     </div>
   )
 }
- const Tasks=()=>{
+
+const TASK_HEADER_MAPPING={
+  INBOX:"Inbox",
+  TODAY:"Today",
+  NEXT_7:"Next 7 Days"
+}
+ const Tasks=({selectedTab})=>{
    const [showAddTask ,setShowAddTask]=useState(false)
    const [tasks, setTasks]=useState([]);
 
@@ -46,6 +52,7 @@ const AddTask=({onAddTask, onCancel})=>{
    return(
      <div className="tasks">
        <h1>
+         {/* {TASK_HEADER_MAPPING[selectedTab]} */}
          Inbox
        </h1>
        <div className="add-task-btn"
@@ -55,7 +62,7 @@ const AddTask=({onAddTask, onCancel})=>{
        </div>
        {showAddTask && <AddTask onAddTask={addNewTask} onCancel={()=>setShowAddTask(false)}/>}
        {tasks.length> 0 ? tasks.map(task=>(<p>
-       {task.text}{dateFnsFormat(new Date(),format)}</p>)): <p>No task yet</p>}
+       {task.text}{"  "}{dateFnsFormat(new Date(),format)}</p>)): <p>No task yet</p>}
      </div>
    )
  }

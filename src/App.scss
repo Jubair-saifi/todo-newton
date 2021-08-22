@@ -116,7 +116,7 @@ body{
         &:disabled{
           background-color: gray;
         }
-        &.active{
+        &:active{
           transform: scale(0.9);
         }
       }
