@@ -6,7 +6,7 @@ import Tasks from './task';
    return(
      <section className="content">
        <SideBar  selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
-       <Tasks /> 
+       <Tasks selectedTab={selectedTab} /> 
      </section>
    )
  }

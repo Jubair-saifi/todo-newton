@@ -8,7 +8,7 @@ import {FaInbox,FaCalendarAlt,FaRegCalendar} from 'react-icons/fa';
       Inbox
       </div>
       <div onClick={()=>setSelectedTab("TODAY")}><FaCalendarAlt className="icon"/>Today</div>
-      <div onClick={()=>setSelectedTab("NEXT-7")}><FaRegCalendar className="icon"/>Next 7 days</div>
+      <div onClick={()=>setSelectedTab("NEXT_7")}><FaRegCalendar className="icon"/>Next 7 days</div>
       
      </div>
    )
