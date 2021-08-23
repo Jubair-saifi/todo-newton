@@ -47,35 +47,52 @@ const TASK_HEADER_MAPPING={
 }
 
 const TaskItems=({selectedTab,tasks})=>{
+  let taskToRender=[...tasks];
   if(selectedTab==='NEXT_7'){
-    return tasks
-    .filter(
-      (task) =>
+    // return tasks
+    // .filter(
+    //   (task) =>
+    //   isAfter(task.date,new Date()) && 
+    //   isBefore(task.date,addDays(new Date(),7))
+    // )
+    // .map((task)=>(
+    //   <p>
+    //     {task.text} {dateFnsFormat( new Date(task.date),format)}{" "}
+    //   </p>
+    // ));
+    taskToRender=taskToRender.filter(
+      (task)=>
       isAfter(task.date,new Date()) && 
       isBefore(task.date,addDays(new Date(),7))
     )
-    .map((task)=>(
-      <p>
-        {task.text} {dateFnsFormat( new Date(task.date),format)}{" "}
-      </p>
-    ));
   }
   if(selectedTab==='TODAY'){
-    return tasks
-    .filter((task)=>isToday(task.date))
-    .map((task)=>(
-      <p>
-        {task.text} {dateFnsFormat( new Date(task.date),format)}{" "}
-      </p>
-    ))
+    // return tasks
+    // .filter((task)=>isToday(task.date))
+    // .map((task)=>(
+    //   <p>
+    //     {task.text} {dateFnsFormat( new Date(task.date),format)}{" "}
+    //   </p>
+    // ))
+    taskToRender=taskToRender.filter((task)=>isToday(task.date));
   }
 
-  return tasks
-    .map((task)=>(
-      <p>
-        {task.text} {dateFnsFormat( new Date(task.date),format)}{" "}
-      </p>
-    ))
+  return(
+    <div className="task-items-container">
+      {taskToRender.map((task)=>(
+        <div className="task-item">
+          <p>{task.text}</p>
+          <p>{dateFnsFormat( new Date(task.date),format)}</p>
+        </div>
+      ))}
+    </div>
+  )
+  //  tasks
+  //   .map((task)=>(
+  //     <p>
+  //       {task.text} {dateFnsFormat( new Date(task.date),format)}{" "}
+  //     </p>
+  //   ))
 
 }
  const Tasks=({selectedTab})=>{
